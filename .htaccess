@@ -1,0 +1,22 @@
+RewriteEngine On
+
+RewriteBase /fotos/
+
+RewriteRule ^/?$ site.php?site=home [L]
+
+RewriteRule ^pic/([0-9]+)/?$ site.php?site=show&id=$1 [L]
+
+RewriteRule ^about/?$ site.php?site=about [L]
+
+RewriteRule ^archive/?$ site.php?site=archive [L]
+RewriteRule ^archive/([0-9]+)/?$ site.php?site=archive&page=$1 [L]
+
+RewriteRule ^random/?$ site.php?site=random [L]
+
+ErrorDocument 403 /fotos/site.php?site=403
+ErrorDocument 404 /fotos/site.php?site=404
+ErrorDocument 405 /fotos/site.php?site=405
+ErrorDocument 408 /fotos/site.php?site=408
+ErrorDocument 500 /fotos/site.php?site=500
+ErrorDocument 502 /fotos/site.php?site=502
+ErrorDocument 504 /fotos/site.php?site=504

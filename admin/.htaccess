@@ -1,0 +1,5 @@
+AuthType Basic
+AuthName "ACP"
+AuthUserFile /srv/www/httpd/web/fotos/.htpasswd
+Require valid-user
+

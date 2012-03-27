@@ -1,0 +1,36 @@
+<div id="subbox">
+<div id="col1">
+<h2>Impressum</h2>
+
+<p>Markus Bach<br />Im Lichtenfelde 2<br />33100 Paderborn</p>
+<ul>
+<li>E-Mail: <a title="E-Mail"
+href="mailto:markus@derpaderborner.de">markus@derpaderborner.de</a></li>
+<li>XMPP: <a href="xmpp:markus@derpaderborner.de?message"
+title="XMPP">markus@derpaderborner.de</a></li>
+</ul>
+</div>
+
+<div id="col2">
+<h2>Links</h2>
+
+<p>Hier sind ein paar nette Links:</p>
+<ul>
+<li><a href="http://derpaderborner.de">derpaderborner.de</a> - Mein Blog.</li>
+<li><a href="http://jannisgreff.de">jannisgreff.de</a> - Mediablog eines
+K&uuml;nstlers</li>
+<li><a href="http://dcja.de">DCJa.de</a> - Blog von nem Kumpel</li>
+<li><a href="http://g-dich.de">g-dich.de</a> - altes Projekt von mir</li>
+
+</ul>
+</div>
+
+<div id="col3">
+<h2>License </h2>
+<p>All photographs are licensed under a <a rel="license"
+href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons
+Attribution-NonCommercial-ShareAlike 3.0 Unported License</a></p>
+<p>If you want to use some of my pictures and need a file with better
+resolution, just drop me a mail and buy me a beer ;)</p>
+</div>
+</div>
