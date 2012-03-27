@@ -4,8 +4,8 @@
  */
 
 0. Overview
-This Software was designed to publish images. It's still in active development
-so don't expect to much.
+This Software was designed to publish images. It's still in an early
+development state so don't expect much.
 
 1. Requirements
 PHP,MySQL,mod_rewrite,GD>=1.8
