@@ -17,7 +17,7 @@
             $("#right").click(function () {
                 window.location='<?php echo $this->url; ?>pic/<?php echo $this->nextId; ?>';
             });
-            $("#menu").html("<a href='#' onClick='showexif();'>exif</a> &nbsp;·&nbsp;" + $("#menu").html());
+            $("#menu").html("<a href='#' onClick='showmain();'>info</a> &nbsp;·&nbsp; <a href='#' onClick='showexif();'>exif</a> &nbsp;·&nbsp;" + $("#menu").html());
         });
         function showexif() {
             $('#exifbox').css({'opacity' : 0.9 });
@@ -25,11 +25,27 @@
             $('#exifboxtitle').css({'opacity' : 0.65 });
             $('#exifboxtitle').toggle(); 
         }
+        function showmain() {
+            $('#main').css({'opacity' : 0.9 });
+            $('#main').toggle();
+            $('#title').css({'opacity' : 0.65 });
+            $('#title').toggle();
+        }
     </script>
 
   </head>
   <body>
     <?php include $this->header; ?>
+    <div id="mainwrapper">
+        <div id="title"><p class="title"><?php echo $this->pic['title']; ?></p></div>
+        <div id="main">
+            <div id="scroll">
+                <div id="notes">
+<?php echo $this->pic['description']; ?>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="exifwrapper">
         <div id="exifboxtitle"><p class="exiftitle">exif informationen</p></div>
         <div id="exifbox">

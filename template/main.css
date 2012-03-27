@@ -1,3 +1,40 @@
+#mainwrapper {
+    top: 50px;
+    left: 20px;
+    position: fixed;
+    z-index: 3;
+}
+#main {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: none;
+    width: 300px;
+    background-color: #efefef;
+    z-index: 3; 
+    border: 1px solid black;
+    color: black;
+}
+.title {
+    margin: 0px;
+    padding-left: 5px;
+    font-family: Trebuchet MS, Arial, Verdana, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-top: 3px;
+}
+#title {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: none;
+    width: 300px;
+    background-color: black;
+    color: white;
+    height: 16px;
+    z-index: 3;
+    border: 1px solid black;
+}
 .exifitem {
     font-weight: bold;
     text-transform: none;
@@ -6,7 +43,10 @@
     text-align: right;
     float: right;
 }
-
+#scroll {
+    padding: 10px;
+    color: black;
+}
 #exif {
     padding: 10px;
     color: black;
