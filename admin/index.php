@@ -3,7 +3,7 @@
  * It is licensed as beerware. So drink up and get me a beer!
  * Just kidding. Have fun with this piece of crap.
  */
-$_GLOBALS['acp'] = true;
+$GLOBALS['acp'] = true;
 
 require_once('../settings.php');
 require_once('../class/template.php');
@@ -19,7 +19,7 @@ switch ($_GET['site']) {
     case 'edit':
         if(isset($_GET['id']) && (isset($_POST['title']) || isset($_POST['date']) || isset($_POST['descr']) || isset($_FILES['picture']))) {
             if(!$img->update($_GET['id'], $_POST['date'], $_POST['title'], $_POST['descr'], $_FILES['picture'])) $msg = 'Fehler beim editieren.';
-            else $msg = 'Die Änderungen wurden erfolgreich hochgeladen.';
+            else $msg = 'Die Änderungen wurden erfolgreich vorgenommen.';
         }
         if(!isset($_GET['id'])) {
             $out = new Template('../template/error.php', array('title' => 'Fehler', 'text' => 'o.O wat soll ich editieren??'));
