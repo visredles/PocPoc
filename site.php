@@ -16,8 +16,8 @@ $exif = new Exif();
 
 switch ($_GET['site']) {
     case "about":
-        $fh = fopen('about.txt','r');
-        $about = fread($fh, filesize('about.txt'));
+        $fh = fopen('about.htm','r');
+        $about = fread($fh, filesize('about.htm'));
         $out = new Template('template/about.php', array('title' => 'About', 'content' => $about));
         break;
     case "archive":
