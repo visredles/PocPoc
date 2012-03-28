@@ -1,7 +1,8 @@
 <html>
   <head>
     <title><?php echo $this->title; ?></title>
-    <link href="<?php echo $this->url; ?>template/main.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo $this->url; ?>template/styles/main.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo $this->url; ?>template/styles/archive.css" type="text/css" rel="stylesheet">
 
     <script type="text/javascript" src="<?php echo $this->url; ?>template/scripts/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="<?php echo $this->url; ?>template/scripts/jquery.hoverpulse.js"></script>

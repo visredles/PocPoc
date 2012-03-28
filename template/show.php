@@ -1,8 +1,8 @@
 <html>
   <head>
     <title><?php echo $this->title; ?></title>
-    <!-- nextId: <?php echo $this->nextId; ?>, prevId: <?php echo $this->prevId; ?> -->
-    <link href="<?php echo $this->url; ?>template/main.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo $this->url; ?>template/styles/main.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo $this->url; ?>template/styles/show.css" type="text/css" rel="stylesheet">
 
     <script type="text/javascript" src="<?php echo $this->url; ?>template/scripts/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="<?php echo $this->url; ?>template/scripts/jquery.effects.core.min.js"></script>
@@ -20,15 +20,11 @@
             $("#menu").html("<a href='#' onClick='showmain();'>info</a> &nbsp;·&nbsp; <a href='#' onClick='showexif();'>exif</a> &nbsp;·&nbsp;" + $("#menu").html());
         });
         function showexif() {
-            $('#exifbox').css({'opacity' : 0.9 });
             $('#exifbox').toggle();
-            $('#exifboxtitle').css({'opacity' : 0.65 });
             $('#exifboxtitle').toggle(); 
         }
         function showmain() {
-            $('#main').css({'opacity' : 0.9 });
             $('#main').toggle();
-            $('#title').css({'opacity' : 0.65 });
             $('#title').toggle();
         }
     </script>
@@ -37,9 +33,9 @@
   <body>
     <?php include $this->header; ?>
     <div id="mainwrapper">
-        <div id="title"><p class="title"><?php echo $this->pic['title']; ?></p></div>
-        <div id="main">
-            <div id="scroll">
+        <div class="boxtitle" id="title"><p class="title"><?php echo $this->pic['title']; ?></p></div>
+        <div class="box" id="main">
+            <div class="scroll">
                 <div id="notes">
 <?php echo $this->pic['description']; ?>
                 </div>
@@ -47,9 +43,9 @@
         </div>
     </div>
     <div id="exifwrapper">
-        <div id="exifboxtitle"><p class="exiftitle">exif informationen</p></div>
-        <div id="exifbox">
-            <div id="exif">
+        <div class="boxtitle" id="exifboxtitle"><p class="title">exif informationen</p></div>
+        <div class="box" id="exifbox">
+            <div class="scroll" id="exif">
                 Camera: <span class="exifitem"><?php echo $this->exif['model']; ?></span><br />
                 Focal length: <span class="exifitem"><?php echo $this->exif['focal']; ?></span><br />
                 Aperture: <span class="exifitem"><?php echo $this->exif['aperture']; ?></span><br />
