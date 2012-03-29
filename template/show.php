@@ -17,7 +17,6 @@
             $("#right").click(function () {
                 window.location='<?php echo $this->url; ?>pic/<?php echo $this->nextId; ?>';
             });
-            $("#menu").html("<a href='#' onClick='showmain();'>info</a> &nbsp;·&nbsp; <a href='#' onClick='showexif();'>exif</a> &nbsp;·&nbsp;" + $("#menu").html());
         });
         function showexif() {
             $('#exifbox').toggle();
