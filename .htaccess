@@ -2,7 +2,7 @@ RewriteEngine On
 
 RewriteBase /fotos/
 
-RewriteRule ^/?$ site.php?site=home [L]
+RewriteRule ^/?$ site.php?site=show [L]
 
 RewriteRule ^pic/([0-9]+)/?$ site.php?site=show&id=$1 [L]
 

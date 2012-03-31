@@ -13,11 +13,12 @@ class Template {
     }
 
     public function __construct($file, $args = array()) {
-        global $url;
-        $this->file = $file;
+        global $url,$template;
+        if(!is_dir('templates/'.$template)) $template='default';
+        $this->file = 'templates/'.$template.'/'.$file;
         $this->args = $args;
-        $this->args['header'] = 'template/header.php';
-        $this->args['footer'] = 'template/footer.php';
+        $this->args['header'] = 'templates/'.$template.'/header.php';
+        $this->args['footer'] = 'templates/'.$template.'/footer.php';
         $this->args['url']    = $url;
     }
 

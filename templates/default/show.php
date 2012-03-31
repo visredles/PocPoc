@@ -1,12 +1,12 @@
 <html>
   <head>
     <title><?php echo $this->title; ?></title>
-    <link href="<?php echo $this->url; ?>template/styles/main.css" type="text/css" rel="stylesheet">
-    <link href="<?php echo $this->url; ?>template/styles/show.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo $this->url; ?>templates/default/styles/main.css" type="text/css" rel="stylesheet">
+    <link href="<?php echo $this->url; ?>templates/default/styles/show.css" type="text/css" rel="stylesheet">
 
-    <script type="text/javascript" src="<?php echo $this->url; ?>template/scripts/jquery-1.3.2.min.js"></script>
-    <script type="text/javascript" src="<?php echo $this->url; ?>template/scripts/jquery.effects.core.min.js"></script>
-    <script type="text/javascript" src="<?php echo $this->url; ?>template/scripts/jquery.superbgimage.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->url; ?>templates/default/scripts/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->url; ?>templates/default/scripts/jquery.effects.core.min.js"></script>
+    <script type="text/javascript" src="<?php echo $this->url; ?>templates/default/scripts/jquery.superbgimage.min.js"></script>
     <script type="text/javascript">
         $(function() {
             $.fn.superbgimage.options = { speed: 'fast' };

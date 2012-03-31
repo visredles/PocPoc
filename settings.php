@@ -5,6 +5,7 @@
  */
 
 $url='';
+$template='default';
 $imagedir='images/';
 $thumbdir='thumbnails/';
 $thumbnail['w']=230;

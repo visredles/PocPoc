@@ -22,12 +22,12 @@ switch ($_GET['site']) {
             else $msg = 'Die Änderungen wurden erfolgreich vorgenommen.';
         }
         if(!isset($_GET['id'])) {
-            $out = new Template('../template/error.php', array('title' => 'Fehler', 'text' => 'o.O wat soll ich editieren??'));
+            $out = new Template('error.php', array('title' => 'Fehler', 'text' => 'o.O wat soll ich editieren??'));
             break;
         }
         $pic = $img->getImage((int) $_GET['id'] );
-        if(!is_array($pic)) $out = new Template('../template/error.php', array('title' => 'Fehler', 'text' => 'Sorry, aber es gibt kein Bild mit der ID '.$_GET['id'].' in meiner DB'));
-        else $out = new Template('template/edit.php', array('title' => $pic['title'].' bearbeiten', 'pic' => $pic, 'exif' => $exif->get('../'.$imagedir.$pic['image']), 'thumbdir' => $thumbdir, 'msg' => $msg ));
+        if(!is_array($pic)) $out = new Template('error.php', array('title' => 'Fehler', 'text' => 'Sorry, aber es gibt kein Bild mit der ID '.$_GET['id'].' in meiner DB'));
+        else $out = new Template('edit.php', array('title' => $pic['title'].' bearbeiten', 'pic' => $pic, 'exif' => $exif->get('../'.$imagedir.$pic['image']), 'thumbdir' => $thumbdir, 'msg' => $msg ));
         break;
     case 'settings':
         if(count($_POST)) {
@@ -52,7 +52,7 @@ switch ($_GET['site']) {
             if(substr($line,0,1)=='$')
                 $options[htmlspecialchars(substr($line,1,strpos($line,'=')-1),ENT_QUOTES)] = htmlspecialchars(trim(substr($line,strpos($line,'=')+1,-1),"'"),ENT_QUOTES);
         }
-        $out = new Template('template/settings.php', array('title' => 'Settings', 'content' => $options));
+        $out = new Template('settings.php', array('title' => 'Settings', 'content' => $options));
         break;
     case 'images':
     default:
@@ -62,7 +62,7 @@ switch ($_GET['site']) {
             else $msg = 'Das Bild "'.$_POST['title']." wurde erfolgreich hochgeladen.";
         }
         $pics = $img->getImages('id, title, image, date');
-        $out = new Template('template/images.php', array('title' => 'Bilderverwaltung', 'pics' => $pics, 'thumbdir' => $thumbdir, 'msg' => $msg));
+        $out = new Template('images.php', array('title' => 'Bilderverwaltung', 'pics' => $pics, 'thumbdir' => $thumbdir, 'msg' => $msg));
         break;
 }
 $out->render();

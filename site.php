@@ -18,17 +18,16 @@ switch ($_GET['site']) {
     case "about":
         $fh = fopen('about.htm','r');
         $about = fread($fh, filesize('about.htm'));
-        $out = new Template('template/about.php', array('title' => 'About', 'content' => $about));
+        $out = new Template('about.php', array('title' => 'About', 'content' => $about));
         break;
     case "archive":
         $pics = $img->getImages('id, title, image');
-        $out = new Template('template/archive.php', array('title' => 'Archiv', 'num_pics' => count($pics), 'pics' => $pics, 'thumbdir' => $thumbdir));
+        $out = new Template('archive.php', array('title' => 'Archiv', 'num_pics' => count($pics), 'pics' => $pics, 'thumbdir' => $thumbdir));
         break;
     case "random":
         $id = array_rand($img->getImages('id'));
         header('Location: '.$url.'pic/'.$id);
         exit;
-    case "home":
     case "show":
         if(isset($_GET['id'])) $pic = $img->getImage((int) $_GET['id']);
         else {
@@ -36,9 +35,9 @@ switch ($_GET['site']) {
             $pic = $pic[0];
         }
         if(!is_array($pic))
-            $out = new Template('template/error.php', array('title' => 'Bild nicht gefunden.', 'text' => 'Das gewünschte Bild wurde nicht gefunden.'));
+            $out = new Template('error.php', array('title' => 'Bild nicht gefunden.', 'text' => 'Das gewünschte Bild wurde nicht gefunden.'));
         else
-            $out = new Template('template/show.php', array('title' => $pic['title'], 'pic' => $pic, 'imagedir' => $imagedir, 'nextId' => $img->getNextId($pic['date']), 'prevId' => $img->getPrevId($pic['date']), 'exif' => $exif->get($imagedir.$pic['image']) ));
+            $out = new Template('show.php', array('title' => $pic['title'], 'pic' => $pic, 'imagedir' => $imagedir, 'nextId' => $img->getNextId($pic['date']), 'prevId' => $img->getPrevId($pic['date']), 'exif' => $exif->get($imagedir.$pic['image']) ));
         break;
     default:
         $codes = array( 
@@ -50,7 +49,7 @@ switch ($_GET['site']) {
             502 => array('502 Schlechter Knoten', ' Irgendwo auf der Strecke zwischen dir und dieser Seite gab es einen Fehler..'), 
             504 => array('504 Knoten Zeitüberschreitung', 'Irgendwo auf der Strecke zwischen dir und dieser Seite ist eine Schnarchnase.') 
         ); 
-        $out = new Template ('template/error.php',
+        $out = new Template ('error.php',
             array('title' => ((!isset($codes[$_GET['site']][0])?'Fehler':$codes[$_GET['site']][0])),
                   'text'  => ((!isset($codes[$_GET['site']][1])?'Es ist ein Fehler aufgetreten.':$codes[$_GET['site']][1]).' Falls du einem Link gefolgt bist, sag mir bitte Bescheid.')
                   )

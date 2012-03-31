@@ -1,8 +1,8 @@
 <html>
 <head>
 <title><?php echo $this->title; ?></title>
-<link href="<?php echo $this->url; ?>template/styles/main.css" type="text/css" rel="stylesheet">
-<link href="<?php echo $this->url; ?>template/styles/about.css" type="text/css" rel="stylesheet">
+<link href="<?php echo $this->url; ?>templates/default/styles/main.css" type="text/css" rel="stylesheet">
+<link href="<?php echo $this->url; ?>templates/default/styles/about.css" type="text/css" rel="stylesheet">
 </head>
 <body>
 <?php include $this->header; ?>
