@@ -2,13 +2,16 @@ Picture online CMS piece of crap
 ================================
 
 1. Overview
+
     This Software was designed to publish images. It's still in an early
 development state so don't expect much.
 
 2. Requirements
+
     PHP,MySQL,mod_rewrite,GD>=1.8
 
 3. Installation
+
     1. First you'll have to create a table in your MySQL Database. Look into the
 fotos_pics.sql file.
     2. You should upload all files, except for this one and the sql-file.
@@ -19,4 +22,5 @@ admin username and password (admin/nimda). After that you'll see a form with a l
 configuration options. I hope they are selfexplaining.
 
 5. The future
+
     Soon there'll be some more features.
