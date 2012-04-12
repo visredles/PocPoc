@@ -1,0 +1,12 @@
+body{background-color:#000;color:#777}
+body a{color:#777;font-weight:bold;text-decoration:none;}
+#image img{width:900px;height:600px}
+#image{width:900px;height:600px;}
+.exifitem{font-weight:bold;text-align:right;}
+#exif{width:50%;float:right;}
+#info{width:50%;float:left;}
+#descr{overflow:visible;}
+#underimg{padding:10px;}
+#mainBody{margin:0 auto;overflow:auto;width:900px;background-color:#333;}
+h2{font-size:120%;margin:0;padding:0;}
+#menu{text-align:right;letter-spacing:1px;}
