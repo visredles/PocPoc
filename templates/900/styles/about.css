@@ -1,0 +1,7 @@
+#col1{width:33%;float:left;}
+#col2{width:33%;float:left;}
+#col3{width:33%;float:right;}
+#subbox{position:relative;text-align:center;width:100%;}
+#subbox h2{font-weight:normal;font-size:14px;text-transform:uppercase;}
+#subbox ul{font-size:11px;font-style:italic;}
+#subbox ul li{list-style:none;}

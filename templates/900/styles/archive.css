@@ -1,0 +1,5 @@
+.thumbwrapper{height:100%;margin:5px;position:relative;width:240px;}
+.thumb{background:none repeat scroll 0 0 #333333;border:1px solid #666666;float:left;height:183px;margin:5px 23px;text-align:center;}
+.thumb a:link, .albumWrapper a:visited{border:1px solid #666666;display:block;}
+.thumb img{border:3px solid #FFFFFF;height:150px;width:230px;}
+.thumb_title{bottom:5px;font-size:15px;height:20px;left:0;overflow:hidden;position:absolute;text-align:left;text-overflow:ellipsis;white-space:nowrap;width:236px;z-index:1;}
