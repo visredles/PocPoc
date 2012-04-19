@@ -9,9 +9,7 @@
 <?php include $this->header; ?>
 <div id="browse_main">
 <div id="aboutbox">
-
 <?php echo $this->content; ?>
-
 </div>
 </div>
 </div>
