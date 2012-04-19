@@ -7,8 +7,8 @@
         <div id="mainbody">
             <?php include $this->header; ?>
             <div id="image">
-                <?php if($this->prevId>-1) echo '<div id="left"></div>'; ?>
-                <?php if($this->nextId>-1) echo '<div id="right"></div>'; ?>
+                <?php if($this->prevId>-1) echo '<div id="left"><a class="nav" href="'.$this->url.'pic/'.$this->prevId.'"></a></div>'; ?>
+                <?php if($this->nextId>-1) echo '<div id="right"><a class="nav" href="'.$this->url.'pic/'.$this->nextId.'"></a></div>'; ?>
                 <img src="<?php echo $this->url.$this->imagedir.$this->pic['image']; ?>" alt="<?php echo $this->pic['title']; ?>">
             </div>
             <div id="underimg">
