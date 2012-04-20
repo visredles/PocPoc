@@ -1,4 +1,4 @@
 .thumbwrapper{margin:5px;position:relative;height:100%;}
 .thumb{border:1px solid #666;float:left;height:183px;margin:5px 23px;}
 .thumb img{border:3px solid #fff;height:150px;width:230px;}
-.thumb_title{bottom:5px;font-size:15px;overflow:hidden;position:absolute;text-overflow:ellipsis;white-space:nowrap;z-index:1;}
+.thumb_title{bottom:5px;font-size:15px;overflow:hidden;position:absolute;text-overflow:ellipsis;white-space:nowrap;z-index:1;width:236px;}
