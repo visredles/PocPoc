@@ -13,7 +13,6 @@ global $url,$thumbdir,$imagedir;
 
 $img = new Images();
 $exif = new Exif();
-
 switch ($_GET['site']) {
     case "about":
         $fh = fopen('about.htm','r');
@@ -25,7 +24,8 @@ switch ($_GET['site']) {
         $out = new Template('archive.php', array('title' => 'Archiv', 'num_pics' => count($pics), 'pics' => $pics, 'thumbdir' => $thumbdir));
         break;
     case "random":
-        $id = array_rand($img->getImages('id'));
+        $ids=$img->getImages('id');
+        $id = $ids[array_rand($ids)]['id'];
         header('Location: '.$url.'pic/'.$id);
         exit;
     case "show":
