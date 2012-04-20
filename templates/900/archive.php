@@ -3,6 +3,7 @@
 <title><?php echo $this->title; ?></title>
 <link href="<?php echo $this->url; ?>templates/900/styles/main.css" type="text/css" rel="stylesheet">
 <link href="<?php echo $this->url; ?>templates/900/styles/archive.css" type="text/css" rel="stylesheet">
+<link rel="shortcut icon" href="<?php echo $this->url; ?>favicon.ico" />
 </head>
 <body>
 <div id="mainbody">
