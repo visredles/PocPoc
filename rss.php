@@ -3,7 +3,7 @@ require_once('settings.php');
 require_once('class/images.php');
 
 $img = new Images();
-$imgs = $img->getImages();
+$imgs = $img->getImages('*','10');
 
 $xml = new DOMDocument('1.0', 'UTF-8');
 $xml->formatOutput = true;
@@ -24,7 +24,6 @@ foreach($imgs as $pic) {
     $item = $xml->createElement('item');
     $channel->appendChild($item);
     $item->appendChild($xml->createElement('title', $pic['title']));
-#    $item->appendChild($xml->createElement('description')->appendChild($xml->createCDATASection('<img src="'.$url.$thumbdir.'thumb_'.$pic['image'].'" alt="'.$pic['title'].'" />'.$pic['description'])));
     $descr = $xml->createElement('description');
     $item->appendChild($descr);
     $descr->appendChild($xml->createCDATASection('<a href="'.$url.'pic/'.$pic['id'].'"><img src="'.$url.$thumbdir.'thumb_'.$pic['image'].'" alt="'.$pic['title'].'" /></a>'.$pic['description']));
