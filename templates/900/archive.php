@@ -1,9 +1,10 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 <title><?php echo $this->title; ?></title>
 <link href="<?php echo $this->url; ?>templates/900/styles/main.css" type="text/css" rel="stylesheet">
 <link href="<?php echo $this->url; ?>templates/900/styles/archive.css" type="text/css" rel="stylesheet">
-<link rel="shortcut icon" href="<?php echo $this->url; ?>favicon.ico" />
+<link rel="shortcut icon" href="<?php echo $this->url; ?>favicon.ico">
 </head>
 <body>
 <div id="mainbody">
@@ -11,7 +12,7 @@
 <?php foreach ($this->pics as $pic) { ?>
 <div class="thumb">
 <div class="thumbwrapper">
-<a href="<?php echo $this->url.'pic/'.$pic['id']; ?>"><img class="thumbnails" src="<?php echo $this->url.$this->thumbdir.'thumb_'.$pic['image']; ?>" /></a>
+<a href="<?php echo $this->url.'pic/'.$pic['id']; ?>"><img alt="<?php echo $pic['title']; ?>" class="thumbnails" src="<?php echo $this->url.$this->thumbdir.'thumb_'.$pic['image']; ?>"></a>
 <div class="thumb_title"><?php echo $pic['title']; ?></div>
 </div>
 </div>
