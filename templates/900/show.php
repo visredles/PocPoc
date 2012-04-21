@@ -1,11 +1,13 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title><?php echo $this->title; ?></title>
-<link href="<?php echo $this->url; ?>templates/900/styles/main.css" type="text/css" rel="stylesheet">
-<link href="<?php echo $this->url; ?>templates/900/styles/show.css" type="text/css" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo $this->url; ?>rss">
-<link rel="shortcut icon" href="<?php echo $this->url; ?>favicon.ico">
+<link href="<?php echo $this->url; ?>templates/900/styles/main.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo $this->url; ?>templates/900/styles/show.css" type="text/css" rel="stylesheet" />
+<link rel="alternate" type="application/rss+xml" title="RSS" href="<?php echo $this->url; ?>rss" />
+<link rel="shortcut icon" href="<?php echo $this->url; ?>favicon.ico" />
 </head>
 <body>
 <div id="mainbody">
@@ -13,7 +15,7 @@
 <div id="image">
 <?php if($this->prevId>-1) echo '<div id="left"><a class="nav" href="'.$this->url.'pic/'.$this->prevId.'"></a></div>'; ?>
 <?php if($this->nextId>-1) echo '<div id="right"><a class="nav" href="'.$this->url.'pic/'.$this->nextId.'"></a></div>'; ?>
-<img src="<?php echo $this->url.$this->imagedir.$this->pic['image']; ?>" alt="<?php echo $this->pic['title']; ?>">
+<img src="<?php echo $this->url.$this->imagedir.$this->pic['image']; ?>" alt="<?php echo $this->pic['title']; ?>" />
 </div>
 <div id="underimg">
 <div id="info">
