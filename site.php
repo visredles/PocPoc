@@ -37,7 +37,8 @@ switch ($_GET['site']) {
         if(!is_array($pic))
             $out = new Template('error.php', array('title' => 'Bild nicht gefunden.', 'text' => 'Das gewünschte Bild wurde nicht gefunden.'));
         else
-            $out = new Template('show.php', array('title' => $pic['title'], 'pic' => $pic, 'imagedir' => $imagedir, 'nextId' => $img->getNextId($pic['date']), 'prevId' => $img->getPrevId($pic['date']), 'exif' => $exif->get($imagedir.$pic['image']) ));
+            $pic['size'] = getimagesize($imagedir.$pic['image']);
+            $out = new Template('show.php', array('title' => $pic['title'], 'pic' => $pic, 'imagedir' => $imagedir, 'nextId' => $img->getNextId($pic['date']), 'prevId' => $img->getPrevId($pic['date']), 'exif' => $exif->get($imagedir.$pic['image']),  ));
         break;
     default:
         $codes = array( 
