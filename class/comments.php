@@ -15,6 +15,9 @@ class Comments {
 		$picide = (int) $picid;
 		return $this->db->query('SELECT * FROM <table> WHERE picid='.$picid. ($GLOBALS['acp']?'':' AND `active`=1').' ORDER BY `date` DESC'.(empty($limit)?';':' LIMIT '.$limit.';'));
 	}
+	function getAllComments() {
+		return $this->db->query('SELECT * FROM <table> '.($GLOBALS['acp']?'':'WHERE `active`=1 ').' ORDER BY `date` DESC');
+	}
 	function newComment($id=-1,$author='',$email='',$homepage='',$text='') {
 		if($id==-1 || strlen($author)==0 || strlen($email)==0 || strlen($text)==0)
 			return false;
@@ -27,6 +30,12 @@ class Comments {
 			$this->db->escape($email),
 			$this->db->escape($homepage),
 			$this->db->escape($text)))==1;
+	}
+	function setactive($id,$active=false) {
+		return $this->db->query("UPDATE <table> SET `active`=$active WHERE `id`=$id;");
+	}
+	function del($id){
+		return $this->db->query("DELETE FROM <table> WHERE `id`=$id");
 	}
 }
 ?>

@@ -9,16 +9,32 @@ require_once('../settings.php');
 require_once('../class/template.php');
 require_once('../class/images.php');
 require_once('../class/exif.php');
+require_once('../class/comments.php');
 
 $img = new Images();
 $exif = new Exif();
+$com = new Comments();
 
 global $thumbdir;
 
 switch ($_GET['site']) {
-/*    case 'comment':
+    case 'comments':
     	if(isset($_GET['action']) && isset($_GET['id'])) {
-	    if($_GET['action']=='del') */
+	    if($_GET['action']=='del' && $_GET['id']){
+	    	if($com->del((int) $_GET['id'])==1)
+			$msg = 'Kommentar '.((int) $_GET['id']).' wurde erfolgreich gelöscht.';
+		else
+			$msg = 'FEHLER beim löschen.';
+	    }
+	    if($_GET['action']=='setactive' && isset($_GET['id']) && isset($_GET['bool'])) {
+	    	if($com->setactive((int) $_GET['id'],$_GET['bool'])==1)
+			$msg = 'Kommentar aktiviert.';
+		else
+			$msg = 'FEHLER beim Kommentar aktivieren...';
+	    }
+	}
+	$out = new Template('comments.php', array('title' => 'Kommentare', 'comments' => $com->getAllComments(), 'msg' => $msg));
+	break;
     case 'edit':
         if(isset($_GET['id']) && (isset($_POST['title']) || isset($_POST['date']) || isset($_POST['descr']) || isset($_FILES['picture']))) {
             if(!$img->update($_GET['id'], $_POST['date'], $_POST['title'], $_POST['descr'], $_FILES['picture'])) $msg = 'Fehler beim editieren.';
