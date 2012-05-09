@@ -47,8 +47,8 @@ switch ($_GET['site']) {
 	}
         if(isset($_GET['id'])) $pic = $img->getImage((int) $_GET['id']);
         else {
-            $pic = $img->getImages('*','1');
-            $pic = $pic[0];
+            $picid = $img->getImages('id','1');
+            $pic = $img->getImage($picid[0]['id']);
         }
         if(!is_array($pic))
             $out = new Template('error.php', array('title' => 'Bild nicht gefunden.', 'text' => 'Das gewünschte Bild wurde nicht gefunden.'));
