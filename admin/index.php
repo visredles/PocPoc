@@ -16,6 +16,9 @@ $exif = new Exif();
 global $thumbdir;
 
 switch ($_GET['site']) {
+/*    case 'comment':
+    	if(isset($_GET['action']) && isset($_GET['id'])) {
+	    if($_GET['action']=='del') */
     case 'edit':
         if(isset($_GET['id']) && (isset($_POST['title']) || isset($_POST['date']) || isset($_POST['descr']) || isset($_FILES['picture']))) {
             if(!$img->update($_GET['id'], $_POST['date'], $_POST['title'], $_POST['descr'], $_FILES['picture'])) $msg = 'Fehler beim editieren.';

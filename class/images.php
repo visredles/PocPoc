@@ -5,6 +5,7 @@
  */
 
 require_once('database.php');
+require_once('comments.php');
 
 class Images {
     private $db;
@@ -14,6 +15,8 @@ class Images {
     function getImage($id,$what='*') {
         $id=(int) $id;
         $result = $this->db->query('SELECT '.$what.' FROM <table> WHERE `id`='.$id.($GLOBALS['acp']?'':' AND `date`<now()').';');
+	$com = new Comments();
+	$result[0]['comments']=$com->getComments($id);
         return $result[0];
     }
     function getImages($what='*',$limit='') {

@@ -31,10 +31,33 @@ Shutter: <span class="exifitem"><?php echo $this->exif['exposure']; ?></span><br
 ISO: <span class="exifitem"><?php echo $this->exif['iso']; ?></span><br />
 Captured: <span class="exifitem"><?php echo date("d.m.Y H:i:s",strtotime($this->exif['date'])); ?></span>
 </div>
+<div id="comments">
+<!--
+<?php if(strlen($this->msg)>0) echo '<div id="msg">'.$this->msg.'</div>'; ?>
+<form id="commentform" method="POST" action="<?php echo $this->url.'pic/'.$this->pic['id']; ?>">
+<label for="author">Name *</label><input type="text" id="author" name="author" value="<?php echo htmlspecialchars($_COOKIE['name']); ?>" /><br />
+<label for="email">Email *</label><input type="text" id="email" name="email" value="<?php echo htmlspecialchars($_COOKIE['email']); ?>" /><br />
+<label for="homepage">Homepage</label><input type="text" id="homepage" name="homepage" value="<?php echo urldecode($_COOKIE['homepage']); ?>" /><br />
+<textarea id="text" name="text"></textarea><br />
+<input id="cookie" name="cookie" type="checkbox" value="yes" style="float:none;" />&nbsp;Ja, ich will nen Keks
+<input id="submit" type="submit" value="Senden" />
+</form>
+-->
+<?php
+foreach((array) @$this->pic['comments'] as $comment) {
+?>
+<div class="comment">
+<?php
+	echo ((strlen($comment['homepage'])>0)?'<a href="'.$comment['homepage'].'">'.$comment['author'].'</a>':$comment['author']);
+?>
+ - <p class="date"><?php echo $comment['date']; ?></p>
+<div class="comments_text"><?php echo nl2br(htmlspecialchars(stripslashes($comment['text']))); ?></div>
 </div>
-<!--<div id="comment">
-Hier kommt die Kommentarfunktion hin.
-</div>-->
+<?php
+}
+?>
+</div>
+</div>
 </div>
 </body>
 </html>

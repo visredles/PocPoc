@@ -30,6 +30,11 @@ class Database {
         mysql_free_result($result);      
         return $this->data_array;
     }
+    function escape($string) {
+    	global $dbconnect;
+        if(!isset($dbconnect)) $this->connect();
+    	return mysql_real_escape_string($string,$dbconnect);
+    }
 
 }
 ?>

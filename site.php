@@ -13,6 +13,7 @@ global $url,$thumbdir,$imagedir;
 
 $img = new Images();
 $exif = new Exif();
+$com = new Comments();
 switch ($_GET['site']) {
     case "about":
         $fh = fopen('about.htm','r');
@@ -29,6 +30,21 @@ switch ($_GET['site']) {
         header('Location: '.$url.'pic/'.$id);
         exit;
     case "show":
+        if(isset($_POST['cookie'])) {
+	        $expire = time()+60*60*24*30*6; // TODO: nach settings.php verschieben. Aktueller Wert: 6 Monate
+	        setcookie('name',$_POST['author'],$expire);
+		$_COOKIE['name']=urlencode($_POST['author']);
+	        setcookie('email',$_POST['email'],$expire);
+		$_COOKIE['email']=urlencode($_POST['email']);
+	        setcookie('homepage',$_POST['homepage'],$expire);
+		$_COOKIE['homepage']=urlencode($_POST['homepage']);
+	}
+	if(isset($_POST['author']) || isset($_POST['email']) || isset($_POST['homepage']) || isset($_POST['text'])) {
+		if($com->newComment((int) $_GET['id'],$_POST['author'],$_POST['email'],$_POST['homepage'],$_POST['text']))
+			$msg = 'Dein Kommentar wurde erfolgreich abgesendet.';
+		else
+			$msg = 'Fehler bei der Kommentarabgabe. Bitte überprüfe deine Angaben.';
+	}
         if(isset($_GET['id'])) $pic = $img->getImage((int) $_GET['id']);
         else {
             $pic = $img->getImages('*','1');
@@ -38,7 +54,7 @@ switch ($_GET['site']) {
             $out = new Template('error.php', array('title' => 'Bild nicht gefunden.', 'text' => 'Das gewünschte Bild wurde nicht gefunden.'));
         else
             $pic['size'] = getimagesize($imagedir.$pic['image']);
-            $out = new Template('show.php', array('title' => $pic['title'], 'pic' => $pic, 'imagedir' => $imagedir, 'nextId' => $img->getNextId($pic['date']), 'prevId' => $img->getPrevId($pic['date']), 'exif' => $exif->get($imagedir.$pic['image']),  ));
+            $out = new Template('show.php', array('title' => $pic['title'], 'pic' => $pic, 'imagedir' => $imagedir, 'nextId' => $img->getNextId($pic['date']), 'prevId' => $img->getPrevId($pic['date']), 'exif' => $exif->get($imagedir.$pic['image']), 'msg' => $msg ));
         break;
     default:
         $codes = array( 
