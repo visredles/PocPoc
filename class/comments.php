@@ -18,7 +18,9 @@ class Comments {
 	function getAllComments() {
 		return $this->db->query('SELECT * FROM <table> '.($GLOBALS['acp']?'':'WHERE `active`=1 ').' ORDER BY `date` DESC');
 	}
-	function newComment($id=-1,$author='',$email='',$homepage='',$text='') {
+	function newComment($id=-1,$author='',$email='',$homepage='',$text='',$key=0) {
+		global $priv_key;
+		if($key + $_SESSION['key'] != $priv_key) return false;
 		if($id==-1 || strlen($author)==0 || strlen($email)==0 || strlen($text)==0)
 			return false;
 		if(!preg_match('/^[^\x00-\x20()<>@,;:\\".[\]\x7f-\xff]+(?:\.[^\x00-\x20()<>@,;:\\".[\]\x7f-\xff]+)*\@[^\x00-\x20()<>@,;:\\".[\]\x7f-\xff]+(?:\.[^\x00-\x20()<>@,;:\\".[\]\x7f-\xff]+)+$/i', $email)) return false;

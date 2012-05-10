@@ -16,4 +16,5 @@ $db['username']='';
 $db['password']='';
 $db['database']='';
 $db['prefix']='fotos_';
+$priv_key='2147483647';
 ?>

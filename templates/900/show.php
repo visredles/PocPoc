@@ -32,17 +32,18 @@ ISO: <span class="exifitem"><?php echo $this->exif['iso']; ?></span><br />
 Captured: <span class="exifitem"><?php echo date("d.m.Y H:i:s",strtotime($this->exif['date'])); ?></span>
 </div>
 <div id="comments">
-<!--
 <?php if(strlen($this->msg)>0) echo '<div id="msg">'.$this->msg.'</div>'; ?>
 <form id="commentform" method="POST" action="<?php echo $this->url.'pic/'.$this->pic['id']; ?>">
 <label for="author">Name *</label><input type="text" id="author" name="author" value="<?php echo htmlspecialchars($_COOKIE['name']); ?>" /><br />
 <label for="email">Email *</label><input type="text" id="email" name="email" value="<?php echo htmlspecialchars($_COOKIE['email']); ?>" /><br />
 <label for="homepage">Homepage</label><input type="text" id="homepage" name="homepage" value="<?php echo urldecode($_COOKIE['homepage']); ?>" /><br />
+<input type="hidden" name="key" value="<?php echo ($this->priv_key - $_SESSION['key']); ?>" />
 <textarea id="text" name="text"></textarea><br />
+<label style="width:200px;text-align:left">
 <input id="cookie" name="cookie" type="checkbox" value="yes" style="float:none;" />&nbsp;Ja, ich will nen Keks
+</label>
 <input id="submit" type="submit" value="Senden" />
 </form>
--->
 <?php
 foreach((array) @$this->pic['comments'] as $comment) {
 ?>
