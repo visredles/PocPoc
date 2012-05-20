@@ -40,8 +40,12 @@ switch ($_GET['site']) {
 		$_COOKIE['homepage']=addslashes($_POST['homepage']);
 	}
 	if(isset($_POST['author']) || isset($_POST['email']) || isset($_POST['homepage']) || isset($_POST['text'])) {
-		if($com->newComment((int) $_GET['id'],$_POST['author'],$_POST['email'],$_POST['homepage'],$_POST['text'],$_POST['key']))
-			$msg = 'Dein Kommentar wurde erfolgreich abgesendet.';
+		if(time()-$_SESSION['flood']<200)
+			$msg = 'Du musst warten bist du einen weiteren Kommentar abgeben kannst.';
+		elseif($com->newComment((int) $_GET['id'],$_POST['author'],$_POST['email'],$_POST['homepage'],$_POST['text'],$_POST['key'])) {
+			$msg = 'Dein Kommentar wurde erfolgreich abgesendet.'.$_SESSION['flood'];
+			$_SESSION['flood']=time();
+		}
 		else
 			$msg = 'Fehler bei der Kommentarabgabe. Bitte überprüfe deine Angaben.';
 	}
