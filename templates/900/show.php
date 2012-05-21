@@ -19,7 +19,7 @@
 </div>
 <div id="underimg">
 <div id="info">
-<h2><?php echo $this->pic['title']; ?></h2>
+<h2><a href="<?php echo $this->url.'pic/'.$this->pic['id']; ?>" title="Permalink zu diesem Bild"><?php echo $this->pic['title']; ?></a></h2>
 Published on <?php echo date("d.m.Y H:i",strtotime($this->pic['date'])); ?>
 <div id="descr"><?php echo $this->pic['description']; ?></div>
 </div>
