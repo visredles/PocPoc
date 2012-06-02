@@ -8,6 +8,7 @@ $url='';
 $template='default';
 $imagedir='images/';
 $thumbdir='thumbnails/';
+$cachedir='cache/';
 $thumbnail['w']=230;
 $thumbnail['h']=150;
 $thumbnail['q']=95;

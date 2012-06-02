@@ -3,6 +3,7 @@
  * It is licensed as beerware. So drink up and get me a beer!
  * Just kidding. Have fun with this piece of crap.
  */
+require_once('settings.php');
 
 class Template {
     private $args;
@@ -23,9 +24,36 @@ class Template {
     }
 
     public function render() {
-        session_start();
-        header('Content-type: text/html; Charset=utf-8');
-        include $this->file;
+    	global $cachedir;
+    	$hash=$this->getHash();
+	if(file_exists($cachedir.$hash) && !$GLOBALS['acp']) $this->load($cachedir.$hash);
+	else {
+		ob_start();
+		$this->load($this->file);
+		$this->save_cached(ob_get_contents(),$hash);
+		ob_end_flush();
+	}
     }
+    private function load($file) {
+    	session_start();
+    	header('Content-type: text/html; Charset=utf-8');
+	include $file;
+    }
+    private function save_cached($content,$hash) {
+    	global $cachedir;
+	$fh=fopen($cachedir.$hash,'w');
+	fwrite($fh,$content);
+	fclose($fh);
+    }
+    public function getHash() {
+    	$str='';
+    	foreach($this->args as $arg){
+	    if(is_string($arg)) $str.=$arg;
+	    elseif(is_numeric($arg)) $str.=$arg;
+	    elseif(is_object($arg)) $str.=$arg->getHash();
+	}
+	return sha1($str);
+    }
+
 }
 ?>

@@ -65,5 +65,15 @@ class Images {
         if(strlen($up)>0 && substr($up,-1)==',') $up=substr($up,0,-1);
         return $this->db->query('UPDATE <table> SET'.$up.' WHERE id=\''.$id.'\';');
     }
+    public function getHash() {
+    	$str='';
+	foreach($this->args as $arg){
+    		if(is_string($arg)) $str.=$arg;
+    		elseif(is_numeric($arg)) $str.=$arg;
+    		elseif(is_object($arg)) $str.=$arg->getHash();
+    	}
+    	return sha1($str);
+    }
+
 }
 ?>

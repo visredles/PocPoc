@@ -35,6 +35,8 @@ class Database {
         if(!isset($dbconnect)) $this->connect();
     	return mysql_real_escape_string($string,$dbconnect);
     }
-
+    public function getHash() {
+    	return FALSE;
+    }
 }
 ?>

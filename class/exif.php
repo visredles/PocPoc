@@ -64,6 +64,15 @@ class Exif {
         $b = (float) substr($value, $pos+1);
         return ($b == 0) ? ($a) : ($a / $b);
     }
+    public function getHash() {
+    	$str='';
+	foreach($this->args as $arg){
+		if(is_string($arg)) $str.=$arg;
+		elseif(is_numeric($arg)) $str.=$arg;
+		elseif(is_object($arg)) $str.=$arg->getHash();
+	}
+	return sha1($str);
+    }
 }
 
 ?>

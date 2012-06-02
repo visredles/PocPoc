@@ -39,5 +39,14 @@ class Comments {
 	function del($id){
 		return $this->db->query("DELETE FROM <table> WHERE `id`=$id");
 	}
+	public function getHash() {
+		$str='';
+		foreach($this->args as $arg){
+			if(is_string($arg)) $str.=$arg;
+			elseif(is_numeric($arg)) $str.=$arg;
+			elseif(is_object($arg)) $str.=$arg->getHash();
+		}
+		return sha1($str);
+	}
 }
 ?>
