@@ -26,13 +26,14 @@ class Template {
     public function render() {
     	global $cachedir;
     	$hash=$this->getHash();
+	if(extension_loaded('zlib')) ob_start('ob_gzhandler');
+	else ob_start();
 	if(file_exists($cachedir.$hash) && !$GLOBALS['acp']) $this->load($cachedir.$hash);
 	else {
-		ob_start();
 		$this->load($this->file);
 		$this->save_cached(ob_get_contents(),$hash);
-		ob_end_flush();
 	}
+	ob_end_flush();
     }
     private function load($file) {
     	session_start();
