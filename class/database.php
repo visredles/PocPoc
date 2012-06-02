@@ -5,12 +5,10 @@
  */
 
 class Database {
-    private $tablename;
     public  $data_array;
 
-    function Database($table='pics') {
+    function Database() {
         global $db;
-        $this->tablename    = $db['prefix'].$table;
     }
     function connect() {
         global $db, $dbconnect;
@@ -18,10 +16,10 @@ class Database {
         mysql_select_db($db['database'],$dbconnect) or trigger_error("SQL",E_USER_ERROR);
     }
     function query($query) {
-        global $dbconnect;
+        global $db,$dbconnect;
         $this->data_array = Array();
         if(!isset($dbconnect)) $this->connect();
-        $query = preg_replace('/<table>/',$this->tablename,$query);
+        $query = preg_replace('/prefix_/',$db['prefix'],$query);
         $result= mysql_query($query,$dbconnect) or trigger_error("SQL", E_USER_ERROR);
         if(is_bool($result)) return $result;
         while ($row = mysql_fetch_assoc($result)) {
