@@ -3,7 +3,6 @@
  * It is licensed as beerware. So drink up and get me a beer!
  * Just kidding. Have fun with this piece of crap.
  */
-require_once('settings.php');
 
 class Template {
     private $args;
@@ -28,10 +27,10 @@ class Template {
     	$hash=$this->getHash();
 	if(extension_loaded('zlib')) ob_start('ob_gzhandler');
 	else ob_start();
-	if(file_exists($cachedir.$hash) && !$GLOBALS['acp']) $this->load($cachedir.$hash);
+	if(file_exists($cachedir.$hash)) $this->load($cachedir.$hash);
 	else {
 		$this->load($this->file);
-		$this->save_cached(ob_get_contents(),$hash);
+		if(!$GLOBALS['acp']) $this->save_cached(ob_get_contents(),$hash);
 	}
 	ob_end_flush();
     }
