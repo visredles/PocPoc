@@ -69,6 +69,7 @@ class Images {
     	$str='';
 	foreach($this->args as $arg){
     		if(is_string($arg)) $str.=$arg;
+		elseif(is_array($arg)) $str.=implode($arg);
     		elseif(is_numeric($arg)) $str.=$arg;
     		elseif(is_object($arg)) $str.=$arg->getHash();
     	}
