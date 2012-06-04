@@ -53,34 +53,14 @@ class Template {
 	fclose($fh);
     }
     public function getHash() {
-/*    	$str='';
-    	foreach($this->args as $arg){
-	    if(is_string($arg)) $str.=$arg;
-	    elseif(is_array($arg)) $str.=implode($arg);
-	    elseif(is_numeric($arg)) $str.=$arg;
-	    elseif(is_object($arg)) $str.=$arg->getHash();
-	}
-	return sha1($str);*/
 	return $this->getHash2($this->args);
     }
     public function getHash2($arg) {
-    	if(is_string($arg)) {
-		$res=$arg;
-	}
-    	elseif(is_array($arg)) {
-		foreach($arg as $a) {
-			$res.=$this->getHash2($a);
-		}
-	    }
-	elseif(is_object($arg)) {
-		$res=$arg->getHash();
-	}
-	elseif(is_resource($arg)) {
-		$res=42;
-	}
-	else {
-		$res=(string) $arg;
-	}
+    	if(is_string($arg)) $res=$arg;
+	elseif(is_array($arg)) foreach($arg as $a) $res.=$this->getHash2($a);
+	elseif(is_object($arg))	$res=$arg->getHash();
+	elseif(is_resource($arg)) $res=42;
+	else $res=(string) $arg;
 	return sha1($res);
     }
 }
