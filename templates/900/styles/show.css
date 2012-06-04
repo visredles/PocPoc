@@ -6,10 +6,10 @@ h2{font-size:120%;margin:0;padding:0;}
 #info{width:50%;float:left;}
 #descr{overflow:visible;}
 #underimg{padding:10px;float:left;width:880px;}
-#left{left:0;width:50%;height:100%;position:absolute;z-index:1;background-image:url("../images/blank.gif");float:left;}
-#left:hover{background:url("../images/prevImage.png") no-repeat center;}
-#right{right:0;width:50%;height:100%;position:absolute;z-index:1;background-image:url("../images/blank.gif");float:right;}
-#right:hover{background:url("../images/nextImage.png") no-repeat center;}
+#left{left:0;width:50%;height:100%;position:absolute;z-index:1;background-image:url("/templates/900/images/blank.gif");float:left;}
+#left:hover{background:url("/templates/900/images/prevImage.png") no-repeat center;}
+#right{right:0;width:50%;height:100%;position:absolute;z-index:1;background-image:url("/templates/900/images/blank.gif");float:right;}
+#right:hover{background:url("/templates/900/images/nextImage.png") no-repeat center;}
 .nav{display:block;width:100%;height:100%;}
 #comments{float:left;float:left;width:100%;}
 .comment{padding-top:10px;float:right;width:65%;}

@@ -35,8 +35,15 @@ class Template {
 	ob_end_flush();
     }
     private function load($file) {
-    	session_start();
-    	header('Content-type: text/html; Charset=utf-8');
+    	switch (pathinfo($file,PATHINFO_EXTENSION)) {
+		case 'php':
+		    	session_start();
+		    	header('Content-type: text/html; Charset=utf-8');
+			break;
+		case 'css':
+			header('Content-type: text/css; Charset=utf-8');
+			break;
+	}
 	include $file;
     }
     private function save_cached($content,$hash) {

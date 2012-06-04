@@ -4,8 +4,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title><?php echo $this->title; ?></title>
-<link href="<?php echo $this->url; ?>templates/900/styles/main.css" type="text/css" rel="stylesheet" />
-<link href="<?php echo $this->url; ?>templates/900/styles/about.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo $this->url; ?>styles/main.css" type="text/css" rel="stylesheet" />
+<link href="<?php echo $this->url; ?>styles/about.css" type="text/css" rel="stylesheet" />
 <link rel="shortcut icon" href="<?php echo $this->url; ?>favicon.ico" />
 </head>
 <body>
