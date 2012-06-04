@@ -49,7 +49,7 @@ foreach((array) @$this->pic['comments'] as $comment) {
 ?>
 <div class="comment">
 <?php
-	echo ((strlen($comment['homepage'])>0)?'<a href="'.$comment['homepage'].'">'.$comment['author'].'</a>':$comment['author']);
+	echo ((strlen($comment['homepage'])>0)?'<a target="_blank" href="'.$comment['homepage'].'">'.$comment['author'].'</a>':$comment['author']);
 ?>
  - <p class="date"><?php echo $comment['date']; ?></p>
 <div class="comments_text"><?php echo nl2br(htmlspecialchars(stripslashes($comment['text']))); ?></div>
