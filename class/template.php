@@ -22,7 +22,7 @@ class Template {
         $this->args['url']    = $url;
     }
 
-    public function render() {
+    public function render($cache=TRUE) {
     	global $cachedir;
     	$hash=$this->getHash();
 	if(extension_loaded('zlib')) ob_start('ob_gzhandler');
@@ -30,7 +30,7 @@ class Template {
 	if(file_exists($cachedir.$hash)) $this->load($cachedir.$hash);
 	else {
 		$this->load($this->file);
-		if(!$GLOBALS['acp']) $this->save_cached(ob_get_contents(),$hash);
+		if(!$GLOBALS['acp'] && $cache) $this->save_cached(ob_get_contents(),$hash);
 	}
 	ob_end_flush();
     }

@@ -15,6 +15,9 @@ RewriteRule ^random/?$ site.php?site=random [L]
 
 RewriteRule ^rss/?$ rss.php [L]
 
+RewriteRule ^styles/(.*)$ resources.php?file=styles/$1 [L]
+RewriteRule ^css/(.*)$ resources.php?file=css/$1 [L]
+
 ErrorDocument 403 /fotos/site.php?site=403
 ErrorDocument 404 /fotos/site.php?site=404
 ErrorDocument 405 /fotos/site.php?site=405
