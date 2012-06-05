@@ -25,7 +25,7 @@ class Template {
     public function render($cache=TRUE) {
     	global $cachedir;
     	$hash=$this->getHash();
-	if(extension_loaded('zlib') && pathinfo($this->file,PATHINFO_EXTENSION)=='php') ob_start('ob_gzhandler');
+	if(extension_loaded('zlib') && in_array(pathinfo($this->file,PATHINFO_EXTENSION), Array('php','css','js'))) ob_start('ob_gzhandler');
 	else ob_start();
 	if(file_exists($cachedir.$hash.'.html')) $this->load($cachedir.$hash.'.html');
 	else {
