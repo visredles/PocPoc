@@ -40,7 +40,7 @@ switch ($_GET['site']) {
 		$_COOKIE['homepage']=addslashes($_POST['homepage']);
 	}
 	if(isset($_POST['author']) || isset($_POST['email']) || isset($_POST['homepage']) || isset($_POST['text'])) {
-		if(time()-$_SESSION['flood']<200)
+		if(time()-$_SESSION['flood']<200 || (time()-$_SESSION['flood']>5)
 			$msg = 'Du musst warten bist du einen weiteren Kommentar abgeben kannst.';
 		elseif($com->newComment((int) $_GET['id'],$_POST['author'],$_POST['email'],$_POST['homepage'],$_POST['text'],$_POST['key'])) {
 			$msg = 'Dein Kommentar wurde erfolgreich abgesendet.'.$_SESSION['flood'];

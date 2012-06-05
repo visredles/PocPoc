@@ -25,9 +25,9 @@ class Template {
     public function render($cache=TRUE) {
     	global $cachedir;
     	$hash=$this->getHash();
-	if(extension_loaded('zlib')) ob_start('ob_gzhandler');
+	if(extension_loaded('zlib') && pathinfo($this->file,PATHINFO_EXTENSION)) ob_start('ob_gzhandler');
 	else ob_start();
-	if(file_exists($cachedir.$hash)) $this->load($cachedir.$hash);
+	if(file_exists($cachedir.$hash.'.html')) $this->load($cachedir.$hash.'.html');
 	else {
 		$this->load($this->file);
 		if(!$GLOBALS['acp'] && $cache) $this->save_cached(ob_get_contents(),$hash);
@@ -35,20 +35,39 @@ class Template {
 	ob_end_flush();
     }
     private function load($file) {
-    	switch (pathinfo($file,PATHINFO_EXTENSION)) {
+    	$ext=pathinfo($file,PATHINFO_EXTENSION);
+    	switch ($ext) {
 		case 'php':
 		    	session_start();
-		    	header('Content-type: text/html; Charset=utf-8');
+			header('Last-Modified: '.gmdate('D, d M Y H:i:s').' GMT');
+			header('Content-type: text/html; Charset=utf-8');
+			header('Expires: '.gmdate('D, d M Y H:i:s',strtotime('now')));
+			include $file;
 			break;
+		case 'html':
+			session_start();
+		case 'js':
 		case 'css':
-			header('Content-type: text/css; Charset=utf-8');
+			header('Last-Modified: '.gmdate('D, d M Y H:i:s',filemtime($file)).' GMT');
+			header('Expires: '.gmdate('D, d M Y H:i:s',strtotime('+1 month')));
+			header('Content-type: text/'.$ext.'; Charset=utf-8');
+			readfile($file);
+			break;
+		case 'ico':
+		case 'jpg':
+		case 'png':
+		case 'jpeg':
+			$finfo = finfo_open(FILEINFO_MIME_TYPE);
+			header('Last-Modified: '.gmdate('D, d M Y H:i:s',filemtime($file)).' GMT');
+			header('Expires: '.gmdate('D, d M Y H:i:s',strtotime('+1 year')));
+			header('Content-type: '.finfo_file($finfo, $file).'; Charset=utf-8');
+			readfile($file);
 			break;
 	}
-	include $file;
     }
     private function save_cached($content,$hash) {
     	global $cachedir;
-	$fh=fopen($cachedir.$hash,'w');
+	$fh=fopen($cachedir.$hash.'.html','w');
 	fwrite($fh,$content);
 	fclose($fh);
     }

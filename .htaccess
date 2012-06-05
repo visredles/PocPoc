@@ -17,6 +17,10 @@ RewriteRule ^rss/?$ rss.php [L]
 
 RewriteRule ^styles/(.*)$ resources.php?file=styles/$1 [L]
 RewriteRule ^css/(.*)$ resources.php?file=css/$1 [L]
+RewriteRule ^img/(.*)$ resources.php?file=images/$1 [L]
+RewriteRule ^photo/(.*)$ resources.php?file=images/$1&root=true [L]
+RewriteRule ^thumb/(.*)$ resources.php?file=thumbnails/$1&root=true [L]
+RewriteRule ^favicon.ico$ resources.php?file=favicon.ico&root=true [L]
 
 ErrorDocument 403 /fotos/site.php?site=403
 ErrorDocument 404 /fotos/site.php?site=404

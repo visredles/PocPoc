@@ -13,7 +13,7 @@
 <?php foreach ($this->pics as $pic) { ?>
 <div class="thumb">
 <div class="thumbwrapper">
-<a href="<?php echo $this->url.'pic/'.$pic['id']; ?>"><img alt="<?php echo $pic['title']; ?>" class="thumbnails" src="<?php echo $this->url.$this->thumbdir.'thumb_'.$pic['image']; ?>" /></a>
+<a href="<?php echo $this->url.'pic/'.$pic['id']; ?>"><img alt="<?php echo $pic['title']; ?>" class="thumbnails" src="<?php echo $this->url.'thumb/thumb_'.$pic['image']; ?>" /></a>
 <div class="thumb_title"><?php echo $pic['title']; ?></div>
 </div>
 </div>

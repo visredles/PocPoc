@@ -14,7 +14,7 @@
 <div id="image" style="height:<?php echo $this->pic['size'][1]; ?>px;">
 <?php if($this->prevId>-1) echo '<div id="left"><a class="nav" href="'.$this->url.'pic/'.$this->prevId.'"></a></div>'; ?>
 <?php if($this->nextId>-1) echo '<div id="right"><a class="nav" href="'.$this->url.'pic/'.$this->nextId.'"></a></div>'; ?>
-<img src="<?php echo $this->url.$this->imagedir.$this->pic['image']; ?>" alt="<?php echo $this->pic['title']; ?>" <?php echo $this->pic['size'][3]; ?> />
+<img src="<?php echo $this->url.'photo/'.$this->pic['image']; ?>" alt="<?php echo $this->pic['title']; ?>" <?php echo $this->pic['size'][3]; ?> />
 </div>
 <div id="underimg">
 <div id="info">
