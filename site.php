@@ -40,16 +40,16 @@ switch ($_GET['site']) {
 		$_COOKIE['homepage']=addslashes($_POST['homepage']);
 	}
 	if(isset($_POST['author']) || isset($_POST['email']) || isset($_POST['homepage']) || isset($_POST['text'])) {
-		if(time()-$_SESSION['flood']<200 || (time()-$_SESSION['flood']>5)
+		if(time()-$_SESSION['flood']<200 || time()-$_SESSION['flood']>5 || $_POST['key']!=$_SESSION['key'])
 			$msg = 'Du musst warten bist du einen weiteren Kommentar abgeben kannst.';
-		elseif($com->newComment((int) $_GET['id'],$_POST['author'],$_POST['email'],$_POST['homepage'],$_POST['text'],$_POST['key'])) {
+		elseif($com->newComment((int) $_GET['id'],$_POST['author'],$_POST['email'],$_POST['homepage'],$_POST['text'])) {
 			$msg = 'Dein Kommentar wurde erfolgreich abgesendet.'.$_SESSION['flood'];
 			$_SESSION['flood']=time();
 		}
 		else
 			$msg = 'Fehler bei der Kommentarabgabe. Bitte überprüfe deine Angaben.';
 	}
-	$_SESSION['key']=mt_rand((int) $priv_key/4,(int) ($priv_key/4)*3);
+	$_SESSION['key']=mt_rand(0, 2147483647);
         if(isset($_GET['id'])) $pic = $img->getImage((int) $_GET['id']);
         else {
             $picid = $img->getImages('id','1');

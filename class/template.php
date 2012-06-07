@@ -25,8 +25,10 @@ class Template {
     public function render($cache=TRUE) {
     	global $cachedir;
     	$hash=$this->getHash();
-	if(extension_loaded('zlib') && in_array(pathinfo($this->file,PATHINFO_EXTENSION), Array('php','css','js'))) ob_start('ob_gzhandler');
-	else ob_start();
+	if(in_array(pathinfo($this->file,PATHINFO_BASENAME), Array('show.php', 'comments.php'))) ob_start('ob_cookie');
+	elseif(extension_loaded('zlib') && in_array(pathinfo($this->file,PATHINFO_EXTENSION), Array('css','js', 'php'))) ob_start('ob_gzhandler');
+//	elseif(pathinfo($this->file,PATHINFO_EXTENSION)=='php') ob_start('ob_cookie');
+	else ob_start('ob_save');
 	if(file_exists($cachedir.$hash.'.html')) $this->load($cachedir.$hash.'.html');
 	else {
 		$this->load($this->file);
@@ -82,5 +84,14 @@ class Template {
 	else $res=(string) $arg;
 	return sha1($res);
     }
+}
+function ob_cookie($buffer, $mode) {
+	$buffer=preg_replace('/{COOKIE:name}/',htmlspecialchars($_COOKIE['name']),$buffer);
+	$buffer=preg_replace('/{COOKIE:email}/',htmlspecialchars($_COOKIE['email']),$buffer);
+	$buffer=preg_replace('/{COOKIE:homepage}/',htmlspecialchars($_COOKIE['homepage']),$buffer);
+	if(!$_SESSION['key']) $_SESSION['key']=mt_rand(0, 2147483647);
+	$buffer=preg_replace('/{SESSION:key}/',htmlspecialchars($_SESSION['key']),$buffer);
+	if(extension_loaded('zlib')) return ob_gzhandler($buffer, $mode);
+	return $buffer;
 }
 ?>
